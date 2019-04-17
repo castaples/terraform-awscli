@@ -1,4 +1,4 @@
-FROM hashicorp/terraform:full
+FROM castaples/terraform:latest
 
 RUN apk add --update python py-pip openssl ca-certificates groff zip jq curl && \
     pip install --upgrade pip awscli && \
