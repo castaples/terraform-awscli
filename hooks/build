@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ "$DOCKER_TAG" != "latest" ] && [ "$DOCKER_TAG" != "full" ]; then
+  echo "Building FROM castaples/terraform:$DOCKER_TAG"
+  docker build --build-arg FROM_IMAGE="castaples/terraform:$DOCKER_TAG" -f $DOCKERFILE_PATH -t $IMAGE_NAME .
+else
+  if [ "$DOCKER_TAG" = "latest" ]; then
+    echo "Building FROM castaples/terraform:$DOCKER_TAG"
+    docker build --build-arg FROM_IMAGE="castaples/terraform:$DOCKER_TAG" -f $DOCKERFILE_PATH -t $IMAGE_NAME .
+  else
+    echo "Building FROM hashicorp/terraform:$DOCKER_TAG"
+    docker build --build-arg FROM_IMAGE="hashicorp/terraform:$DOCKER_TAG" -f $DOCKERFILE_PATH -t $IMAGE_NAME .
+  fi
+fi
