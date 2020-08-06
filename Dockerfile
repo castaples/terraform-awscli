@@ -6,7 +6,7 @@ ENV GROUP=ci-group
 
 RUN apk add --update python py-pip openssl ca-certificates groff zip jq curl && \
 	pip install --upgrade pip awscli==1.18.113 \
-	terraform-compliance==1.3.0
+	terraform-compliance==1.3.0  && \
     
     rm -rf /var/cache/apk/*
     
